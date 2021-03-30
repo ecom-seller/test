@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>try</title>
+</head>
+<body>
+    <h1>TRY</h1>
+    <button id="btn">Press me</button>
+    <script>
+        var brow;
+        var btn = document.getElementById("btn");
+        btn.addEventListener("click",execute);
+        function detectBrowser() { 
+    if((navigator.userAgent.indexOf("Opera") || navigator.userAgent.indexOf('OPR')) != -1 ) {
+        brow = "Opera";
+    } else if(navigator.userAgent.indexOf("Chrome") != -1 ) {
+        brow = "Chrome";
+    } else if(navigator.userAgent.indexOf("Safari") != -1) {
+        brow = "Safari";
+    } else if(navigator.userAgent.indexOf("Firefox") != -1 ){
+        brow = "Firefox";
+    } else if((navigator.userAgent.indexOf("MSIE") != -1 ) || (!!document.documentMode == true )) {
+        brow = "IE";//crap
+    } else {
+        brow="Unknown";
+    }
+    return brow;
+} 
+  window.desktopcheck = function() {
+  var check = false;
+  if(window.innerWidth>768){
+    check=true;
+    }
+    return check;
+  }
+  function execute() {
+     var brow = detectBrowser();
+     if(window.desktopcheck()&&brow!="Unknown"&brow!="Safari"){
+           window.location="desktop.html";
+     }
+     else{
+          window.location= "mobile.html";
+     }
+  }
+  
+
+</script>
+</body>
+</html>
